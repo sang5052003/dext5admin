@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>웹 표준 접근성의 차세대 HTML5 솔루션, DEXT5</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords"
+	content="웹에디터, 웹표준, 웹접근성, HTML5, HTML편집기, 크로스브라우저, cross browser, XSS, 업로드, UPLOAD">
+<meta name="description" content="웹 접근성 및 웹 표준을 준수하는 HTML5 기반의 솔루션입니다.">
+<!-- <link href="css/sample.common.css" rel="stylesheet" type="text/css" /> -->
+<script type="text/javascript" src="dext5editor/js/dext5editor.js"></script>
+<script type="text/javascript" src="dext5upload/js/dext5upload.js"></script>
+
+
+<script type="text/javascript">
+	//var editor2 = new Dext5editor("editor2");
+</script>
+
+<script type="text/javascript">
+	window.temp = "temp";
+	window.__SAVE_HTML__ = "";
+
+	//init
+	function dext_editor_loaded_event() {
+
+		// id가 editor1인 에디터의 Runtime Mode를 가져옵니다.
+		var editor = DEXT5.getUserRuntimeMode('editor1');
+		console.log(editor);
+
+		loadHtmlFile();
+
+		return;
+		/* 
+		 //init msg test
+		 var html = '';
+		 html += '<!DOCTYPE>';
+		 html += '<html>';
+		 html += '<head>';
+		 html += '<title>DEXT5 Editor</title>';
+		 html += '<meta content="text/html" charset="utf-8" http-equiv="Content-Type">';
+		 html += '<style type="text/css">';
+		 html += 'p { line-height:1.2; margin-top:0px; margin-bottom:0px; }';
+		 html += '</style>';
+		 html += '</head>';
+		 html += '<body>';
+		 html += '<p id="p_id">Hi, DEXT5 Editor!!</p>';
+		 html += '</body>';
+		 html += '</html>';
+
+		 // id가 editor1인 에디터 디자인 영역에 html 소스를 입력합니다.  
+		 DEXT5.setHtmlValueExWithDocType(html, 'editor1'); */
+	}
+
+	//에디터 디자인 영역에 지정한 경로의 html 페이지를 띄웁니다.
+	function loadHtmlFile() {
+
+		loadHtmlFileFromPath();
+		return;
+
+		/*
+		var tempPath = location.href;
+		tempPath = tempPath.substring(0, tempPath.lastIndexOf('/'));
+		tempPath = tempPath.substring(0, tempPath.lastIndexOf('/'));
+
+		// http://localhost:8081
+		console.log(tempPath);
+
+		var context = "/Dext5admin";
+
+		// 외부 html 페이지 생성
+		DEXT5.loadHtmlValueExFromURL(tempPath + context + "/init.html");
+
+		// 외부 도메인 html 페이지 생성
+		//DEXT5.loadHtmlValueExFromServerURL(location.protocol + "//" + location.host + '/sample/html/form1.html', editorID);
+		 */
+	}
+
+	//에디터 디자인 영역에 지정한 경로의 html 페이지를 띄웁니다.
+	function loadHtmlFileFromPath() {
+
+		var tempPath = location.href;
+		tempPath = tempPath.substring(0, tempPath.lastIndexOf('/'));
+		tempPath = tempPath.substring(0, tempPath.lastIndexOf('/'));
+
+		// http://localhost:8081
+		console.log(tempPath);
+
+		// id가 editor1인 에디터 디자인 영역의 html소스를 mime형태로 변환합니다.
+		//var html = DEXT5.getBodyValue('editor1');
+
+		var context = "/Dext5admin";
+
+		// 외부 html 페이지 생성
+		DEXT5.loadHtmlValueExFromURL(tempPath + context + "/init.html");
+
+		/* console.log(DEXT5.getHtmlValueExWithDocType('editor1'));
+		console.log(DEXT5.getHtmlValueExWithHtml('editor1')); */
+		return;
+
+		//jsp tag test
+		var html = '<%/***************** import calsses (암복호화 class) *****************/%>'
+				+ '<%@page ' + 'import="com.hanwha.common.localendecrpt.manager.PrivateInfoEncDecManager"%>'
+				+ '<%--' +
+					'1. 프로그램명 : 보전처리도우미 One Stop 등록' + 
+					'2. 작성자 : ' + 
+					'3. 작성일/작성자 : 2009.08.28' + 
+					'--%>'
+				+ '<%!' + 
+					'public interface ACL_GROUPUSER extends IDAO { ' + 
+					    'String getUserId();' + 
+					'}' + 
+					'%>'
+				+ '<html>'
+				+ '<head>'
+				+ '<style type="text/css">body.td.input.textarea.select {font-size: 9pt;}</style>'
+				+ '<title>제목 없음</title>'
+				+ '<meta name="generator" content="나모 액티브스퀘어 6.0.0.25">'
+				+ '<meta http-equiv="content-type" content="text/html; charset=utf-8">'
+				+ '<script language="javascript">'
+				+ 'showApprFileContentsArea = false;'
+				+ 'console.log("head event");<\/script>'
+				+ '</head>'
+				+ '<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">'
+				+ '<table border="0" cellspacing="0" width="686">'
+				+ '<tr>'
+				+ '<td width="684"><p align="center"><span style="font-size: 14pt;"><b>One Stop 일반작업요청</b></span>'
+				+ '</p>'
+				+ '</td>'
+				+ '</tr>'
+				+ '</table>'
+				+ '<br><br>'
+				+ '<%' + 
+					       'String appr_yn = HttpUtil.getParameter(request, "appr_yn"); //2011.08.18' + 
+					    '%>'
+				+ '<input type="hidden" name="instId">'
+				+ '</body>'
+				+ '</html>'
+				+ '<% if(inputMode == InputConstants.WRITE){ %>'
+				+ '<script>'
+				+ '//initView();'
+				+ 'console.log("out of body");'
+				+ '//document.all.bsnsDnsnCode.onchange=contentsChg;'
+				+ '<\/script>'
+				+ '<% } else { %>'
+				+ '<script>'
+				+ '//initView2();' + '</\script>' + '<% } %>';
+
+		//DEXT5.setHtmlValueExWithDocType(html, 'editor1');
+		//DEXT5.setHtmlValueEx(html, 'editor1');
+
+		html = '';
+		html += '<!DOCTYPE>';
+		html += '<html>';
+		html += '<head>';
+		html += '<title>DEXT5 Editor</title>';
+		html += '<meta content="text/html" charset="utf-8" http-equiv="Content-Type">';
+		html += '<style type="text/css">';
+		html += 'p { line-height:1.2; margin-top:0px; margin-bottom:0px; }';
+		html += '</style>';
+		html += '</head>';
+		html += '<body>';
+		html += '<p id="p_id">Hi, DEXT5 Editor!!</p>';
+		html += '</body>';
+		html += '</html>';
+
+		// id가 editor1인 에디터 디자인 영역에 html 소스를 입력합니다.  
+		/* DEXT5.setHtmlValueExWithDocType(html, 'editor1');
+
+		console.log(DEXT5.getHtmlValueExWithDocType('editor1')); */
+
+		// 외부 도메인 html 페이지 생성
+		//DEXT5.loadHtmlValueExFromServerURL(location.protocol + "//" + location.host + '/sample/html/form1.html', editorID);
+	}
+
+	// ie PL
+	function saveHtmlFile() {
+		var strContent = DEXT5.getBodyValue('editor1');
+		var strDefaultFileName = 'dext5';
+		var strCharSet = 'utf-8';
+
+		DEXT5.doSaveHTML(strContent, strDefaultFileName, strCharSet, 'editor1');
+	}
+
+	// ie PL
+	function encodeMime() {
+
+		// id가 editor1인 에디터 디자인 영역의 html소스를 mime형태로 변환합니다.
+		var html = DEXT5.getBodyValue('editor1');
+		console.log(html);
+		var mimedata = DEXT5.dext5EncodeMime(html, 0);
+		console.log('mimedata ', mimedata);
+
+		var decodeHtml = DEXT5.dext5DecodeMime(mimedata);
+		console.log('decodeHtml : ', decodeHtml);
+
+		/* if (mimedata == '0') {
+			alert('mime 인코딩 오류');
+		} */
+	}
+
+	/////////////
+
+	//custom btn
+	function dext_editor_custom_action(command) {
+		//command 값이 들어옵니다. 이 예제에서는 command 가 "c_test"입니다.
+		if (command == "c_save") {
+
+			//var html = '<p><input:fileupload fileclass="image" name="test2" viewmode="0"></input:fileupload></p>';
+			// id가 editor1인 에디터 디자인 영역에서 커서가 있는 위치에 html 소스를 삽입합니다.
+			//DEXT5.setInsertHTML(html, 'editor1'); //input태그를 삽입합니다.
+
+			encodeMime();
+
+			//saveHTML();
+		} else if (command == "c_input") {
+
+			var context = "/Dext5admin";
+			DEXT5.loadHtmlValueExFromURL(context + "/inputDialog.html");
+
+			//<a href="foo.html" data-rel="dialog">Open dialog</a>
+
+			//dialog 형태
+			//<a href="inputDialog.html" data-rel="dialog">Open dialog</a>
+			console.log('$#inputDialog;');
+			console.log('$#inputDialog ', DEXT5.$('#inputDialog'));
+			DEXT5.$('#inputDialog').dialog({
+				modal : true
+			});
+
+			return;
+
+			var html = '<input type="text" value="">';
+			// id가 editor1인 에디터 디자인 영역에서 커서가 있는 위치에 html 소스를 삽입합니다.
+			DEXT5.setInsertHTML(html, 'editor1'); //input태그를 삽입합니다.
+		} else if (command == "c_load") {
+
+			loadHTML();
+
+			/* var html = '<input type="text" value="">';
+			window.temp = DEXT5.getHtmlValueExWithDocType('editor1');
+			var Dom = DEXT5.getDext5BodyDom('editor1');
+			var input = Dom.getElementsByTagName('input');
+			console.log(input);
+			console.log(input[0].value);
+			window.input = input[0].value;
+			console.log('saved window.input ', window.input);
+			console.log('saved ', window.temp); */
+			//DEXT5.setInsertHTML(html, 'editor1'); //input태그를 삽입합니다.
+		} else if (command == "c_test3") {
+
+			DEXT5.setHtmlValueExWithDocType(window.temp, 'editor1');
+
+			//html -> jsp
+			var Dom = DEXT5.getDext5BodyDom('editor1');
+			var input = Dom.getElementsByTagName('input');
+			console.log('input ', input);
+			console.log('window.input ', window.input);
+			input[0].value = window.input;
+			console.log('load ', window.temp);
+
+			//DEXT5.setHtmlValueExWithDocType(window.temp, 'editor1');
+
+		} else if (command == "c_test4") {
+
+			var Dom = DEXT5.getDext5BodyDom('editor1');
+			var input = Dom.getElementsByTagName('input');
+			console.log(input.innerHTML);
+			window.input = input.innerHTML;
+
+		} else if (command == "c_editor") {
+			//innerEditor();
+
+			//mht
+			var tempPath = location.href;
+			tempPath = tempPath.substring(0, tempPath.lastIndexOf('/'));
+			tempPath = tempPath.substring(0, tempPath.lastIndexOf('/'));
+
+			// http://localhost:8081
+			console.log(tempPath);
+
+			var context = "/Dext5admin";
+
+			// 외부 html 페이지 생성
+			DEXT5.loadHtmlValueExFromURL(tempPath + context + "/Bookmarks.mht");
+
+		} else if (command == "c_add_input") {
+			g_input_seq = 0;
+			g_inputId = "input_id" + g_input_seq;
+			var html = '<input id="' + g_inputId + '" type="text" value="">';
+			DEXT5.setInsertHTML(html, 'editor1'); //input태그를 삽입합니다.
+
+		} else if (command == "c_save_input") {
+			//input_id0
+			var dom = DEXT5.getDext5BodyDom('editor1');
+			var input = dom.getElementById('input_id0');
+			console.log(input[0].value);
+
+		} else if (command == "c_upload") {
+			//input_id0
+
+			var html = '<p id="p_id">Hi, DEXT5 Editor!!</p>';
+			DEXT5.setInsertHTML(html, 'editor1');
+		}
+	}
+
+	function saveHTML() {
+
+		window.__SAVE_HTML__ = DEXT5.getHtmlValueExWithDocType('editor1');
+
+		console.log("save");
+		eraseInput();
+
+		/* 
+		//
+		var dom = DEXT5.getDext5Dom('editor1');
+		//var dom = DEXT5.getD5Dom('editor1');
+		console.log('input value before : ', DEXT5.$("input"));
+		console.log('input value before : ', DEXT5.$("input")[0].value);
+		//console.log('input value before : ', DEXT5.$("input")[0].innerHTML); //no response
+
+		//save to str
+		window.__SAVE_HTML__ = DEXT5.getHtmlValueExWithDocType('editor1');
+
+		console.log("save");
+		eraseInput();
+		 */
+	}
+
+	function eraseInput() {
+		console.log("erase");
+		//var dom = DEXT5.getD5Dom('editor1'); //getDext5Dom
+		var dom = DEXT5.getDext5Dom('editor1');
+		DEXT5.$("input")[0].value = "";
+	}
+
+	// read string value of html
+	function loadHTML() {
+		console.log("load");
+		// id가 editor1인 에디터 디자인 영역에 html 소스를 입력합니다.
+		var html = window.__SAVE_HTML__;
+		DEXT5.setHtmlValueExWithDocType(html, 'editor1');
+	}
+
+	function changeTest() {
+		//var Dom = DEXT5.getDext5Dom('editor1');
+		var dom = DEXT5.getD5Dom('editor1');
+		console.log(dom);
+		//console.log(Dom.getElementsByTagName('p').val);
+
+		//var p = dom.all.p_id;
+
+		console.log('p value before1 : ', DEXT5.$("p"));
+		console.log('p value before2 : ', DEXT5.$("p")[0].innerHTML);
+
+		//p.innerHTML = "edited p";
+
+		DEXT5.$("p")[0].innerHTML = "edited p";
+
+		console.log('p value after : ', DEXT5.$("p")[0].innerHTML);
+
+		console.log(DEXT5.$("p")[0].innerHTML);
+
+	}
+</script>
+
+</head>
+<body>
+	<table border="0" style="width: 800px;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td height="600px"><script type="text/javascript">
+				new Dext5editor("editor1");
+			</script></td>
+		</tr>
+	</table>
+
+	<div style="width: 800px;200px">
+		<script type="text/javascript">
+			new Dext5Upload("upload1");
+		</script>
+	</div>
+</body>
+</html>
