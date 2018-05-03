@@ -90,7 +90,12 @@
 		var context = "/Dext5admin";
 
 		// 외부 html 페이지 생성
-		DEXT5.loadHtmlValueExFromURL(tempPath + context + "/init.html");
+		//DEXT5.loadHtmlValueExFromURL(tempPath + context + "/init.html");
+		
+		console.log("jenkinstest")
+		
+		//jenkins test
+		DEXT5.loadHtmlValueExFromURL("http://cloud.rosesystems.kr:6061/init.html");
 
 		/* console.log(DEXT5.getHtmlValueExWithDocType('editor1'));
 		console.log(DEXT5.getHtmlValueExWithHtml('editor1')); */
